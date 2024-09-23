@@ -78,6 +78,14 @@ function configureInstallation(osName, buildDir) {
     installation = require('./windows').getLldbInstallation();
     config.variables['lldb_lib_dir%'] = installation.libDir;
     config.variables['lldb_lib%'] = installation.libName;
+    const clangExe = 'clang-cl.exe';
+    const clangDir = lldb.findWindowsExeDir(clangExe);
+    if (!clangDir) {
+      console.log(`Could not find ${clangExe}`);
+      process.exit(1);
+    }
+    config.variables['cl_tool_path%'] = clangDir;
+    config.variables['cl_tool_exe%'] = clangExe;
   } else {
     console.log(`Unsupported OS: ${osName}`);
     process.exit(1);

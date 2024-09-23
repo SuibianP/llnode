@@ -39,6 +39,12 @@
         "libraries": [
           "<(lldb_lib_dir)/<(lldb_lib)",
         ],
+        "msbuild_settings": {
+            "ClCompile": {
+                "CLToolPath": "<(cl_tool_path)",
+                "CLToolExe": "<(cl_tool_exe)",
+            },
+        },
       }],
       [ "coverage == 'true'", {
         "cflags": [ "--coverage" ],
