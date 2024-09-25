@@ -14,6 +14,9 @@
 
 #include <lldb/API/SBExpressionOptions.h>
 
+#if defined(WIN32) || defined(_WIN32) || defined(_WIN64)
+#define NOMINMAX
+#endif
 #include "deps/rang/include/rang.hpp"
 #include "src/error.h"
 #include "src/llscan.h"
